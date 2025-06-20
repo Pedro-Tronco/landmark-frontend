@@ -1,21 +1,39 @@
 .logo {
-  background-color: #d9d9d9;
-  border-radius: 95px;
-  display: inline-block;
-  height: 190px;
-  width: 322px;
-  position: relative;
+    align-items: center;
+    background-color: #142405;
+    border-radius: 0px;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    height: max-content;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.logo img {
+  position: static;
+  max-width: 5%;
+  margin-bottom: 0;
+  margin-left: 15px;
+  transform: none;
+  left: auto;
+  top: auto;
 }
 
 .logo .text-wrapper {
-  color: #000000;
-  font-family: "Noto Sans-Black", Helvetica;
-  font-size: 16px;
-  font-weight: 900;
-  left: 124px;
-  letter-spacing: 0;
+  -webkit-text-stroke: 3px #000000;
+  color: #ffffff;
+  font-family: "Jaro", Helvetica;
+  font-size: 50px;
+  font-weight: 400;
+  height: 60px;
+  letter-spacing: -2.5px;
   line-height: normal;
-  position: absolute;
   text-align: center;
-  top: 83px;
+  text-shadow: 4px 4px 2px #00000040;
+  white-space: nowrap;
+  width: 225px;
 }

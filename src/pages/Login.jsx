@@ -25,13 +25,13 @@ export function Login() {
 
   return (
     <>
-      <div className="max-w-md mx-auto p-4">
+      <div className="mx-auto">
         <div className="text-center">
           <Logo />
         </div>
 
         <div className="pt-6 pb-4">
-          <Title title="Faça seu cadastro" />
+          <Title title="Login" />
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -55,7 +55,7 @@ export function Login() {
               onChange={(e) => setSenha(e.target.value)}
             />
           </div>
-          {erro && <p style={{ color: "red" }}>{erro}</p>}
+          {erro && <p style={{ color: "red",  textAlign: "center" }}>{erro}</p>}
 
           <div className="text-center pt-4">
             <Button type="submit">Acessar</Button>
@@ -67,7 +67,7 @@ export function Login() {
             to="/register"
             className="text-blue-600 hover:underline"
           >
-            Faça seu cadastro
+            Ainda não possui conta? <strong>Faça seu cadastro</strong>
           </Link>
         </div>
       </div>

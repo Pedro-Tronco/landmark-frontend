@@ -23,13 +23,13 @@ export function Register() {
 
     return (
         <>
-            <div className="max-w-md mx-auto p-4">
+            <div className="mx-auto">
                 <div className="text-center">
                     <Logo />
                 </div>
 
                 <div className="pt-6 pb-4">
-                    <Title title="Bem-vindo de volta" />
+                    <Title title="Faça seu cadastro" />
                 </div>
 
                 <form onSubmit={handleSubmit}>
@@ -64,7 +64,7 @@ export function Register() {
                         />
                     </div>
 
-                    {erro && <p style={{ color: "red" }}>{erro}</p>}
+                    {erro && <p style={{ color: "red",  textAlign: "center" }}>{erro}</p>}
 
                     <div className="text-center pt-4">
                         <Button type="submit">Cadastrar</Button>

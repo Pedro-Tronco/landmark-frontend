@@ -11,7 +11,6 @@
     width: 100%;
     margin: 0;
     box-sizing: border-box;
-    justify-content: space-between;
 }
 
 .navbar img {
@@ -41,4 +40,11 @@
 
 .navbar .close {
     margin: 0px;
+    margin-left: auto;
+    margin-right: 0px;
+    cursor: pointer;
+}
+
+.navbar .close img {
+    max-width: 20%;
 }

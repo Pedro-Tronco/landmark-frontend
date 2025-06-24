@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://passing-agatha-atitus-0ca94c8f.koyeb.app/ws/point';
+const BASE_URL = 'https://ripe-donella-atitus-fbbf314a.koyeb.app/ws/point';
 
 
 

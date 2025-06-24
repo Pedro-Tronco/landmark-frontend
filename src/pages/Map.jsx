@@ -68,13 +68,14 @@ export const Map = () => {
   return (
     <>
       <Navbar />
-      <div style={{ width: "100%", height: "100%" }}>
+      <div style={{ width: "100%", height: "92%" }}>
         {isLoaded ? (
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
             zoom={12}
             onClick={handleMapClick}
+            mapTypeId="satellite"
           >
             {markers.map(marker => (
               <Marker

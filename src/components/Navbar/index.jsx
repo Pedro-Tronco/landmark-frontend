@@ -10,7 +10,7 @@ export function Navbar() {
         <header className="navbar">
             <img src={logo} alt="logo" />
             <div className="text-wrapper">LandMark</div>
-            <button className="close" onClick={logout}>
+            <button className="close" onClick={logout} title="Log off">
                 <img src={prefil} alt="Voltar para Login" />
             </button>
         </header>

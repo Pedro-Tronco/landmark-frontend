@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://ripe-donella-atitus-fbbf314a.koyeb.app/auth';
+const API_URL = 'https://religious-gui-landmark-8b0eba86.koyeb.app/auth';
 
 export async function signIn(email, password) {
   try {

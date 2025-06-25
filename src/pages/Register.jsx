@@ -64,6 +64,15 @@ export function Register() {
                         />
                     </div>
 
+                    <div className="pb-4">
+                        <Input
+                            label="Código de Ativação"
+                            placeholder="Insira seu código de autentiação (dica para prof: digite qualuqer coisa)"
+                            type="password"
+                            required
+                        />
+                    </div>
+
                     {erro && <p style={{ color: "red",  textAlign: "center" }}>{erro}</p>}
 
                     <div className="text-center pt-4">

@@ -42,9 +42,9 @@ export const Map = () => {
     const lat = event.latLng.lat();
     const lng = event.latLng.lng();
     const newPoint = {
-      latitude: lat,
-      longitude: lng,
-      descricao: "Descrição do ponto", // Você pode personalizar isso
+      lat: lat,
+      lng: lng,
+      description: "Descrição do ponto", // Você pode personalizar isso
     };
     try {
       const savedPoint = await postPoint(token, newPoint);
@@ -55,8 +55,8 @@ export const Map = () => {
         id: savedPoint.id,
         title: savedPoint.descricao || "Novo Ponto",
         position: {
-          lat: savedPoint.latitude,
-          lng: savedPoint.longitude,
+          lat: savedPoint.lat,
+          lng: savedPoint.lng,
         },
       };
       setMarkers((prev) => [...prev, savedMarker]);
@@ -68,7 +68,7 @@ export const Map = () => {
   return (
     <>
       <Navbar />
-      <div style={{ width: "100%", height: "92%" }}>
+      <div style={{ width: "100%", height: "88%" }}>
         {isLoaded ? (
           <GoogleMap
             mapContainerStyle={containerStyle}

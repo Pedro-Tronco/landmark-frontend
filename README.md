@@ -1,16 +1,8 @@
-# Atitus Maps
+# Landmark
 
 ## Sobre o Projeto
 
-O **Atitus Maps** é uma aplicação web que permite visualizar e cadastrar pontos geográficos em um mapa interativo. Usuários autenticados podem adicionar novos pontos clicando no mapa, que são salvos em um backend e exibidos para todos.
-
-## Como iniciar este exercício
-
-Clique em **Copiar Exercício** e abra o link em uma nova aba.
-
-   <a id="copy-exercise" target="_blank" href="https://github.com/new?template_name=atitus-maps&template_owner=jaisonschmidt&name=atitus-maps&owner=%40me&visibility=public">
-      <img src="https://img.shields.io/badge/📠_Copiar_Exercício-008000" height="25pt"/>
-   </a>
+O **Landmark** é o MVP de uma aplicação web de georeferenciamento, que tem como foco auxiliar agricultores de pequeno e médio porte facilitando o gerenciamento da propriedade, com controle de gastos e de área, ordenamento de suas informações como: grão, umidade, serviços executados e produtos utilizados.
 
 ## Funcionalidades
 
@@ -60,6 +52,6 @@ Clique em **Copiar Exercício** e abra o link em uma nova aba.
 
 - Certifique-se de que sua chave do Google Maps tem permissão para uso em aplicações web.
 - O backend utilizado está disponível em:  
-  `https://passing-agatha-atitus-0ca94c8f.koyeb.app/ws/point`
+  `religious-gui-landmark-8b0eba86.koyeb.app/ws/point`
 
 ---

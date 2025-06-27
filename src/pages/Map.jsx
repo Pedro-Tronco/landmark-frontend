@@ -16,7 +16,7 @@ const center = {
   lng: -46.633308,
 };
 
-export const Map = () => {
+export const Map = ({ enableAddPoint, onPointAdded }) => {
   const { token } = useAuth();
   const [markers, setMarkers] = useState([]);
   
@@ -39,6 +39,8 @@ export const Map = () => {
 
   // Função para adicionar ponto ao clicar no mapa
   const handleMapClick = async (event) => {
+    if (!enableAddPoint) return;
+
     const lat = event.latLng.lat();
     const lng = event.latLng.lng();
     const newPoint = {
@@ -46,9 +48,9 @@ export const Map = () => {
       lng: lng,
       description: "Descrição do ponto", // Você pode personalizar isso
     };
+
     try {
       const savedPoint = await postPoint(token, newPoint);
-      
       // savedPoint vem com os campos id, latitude, longitude e descricao
       // Precisamos transformar em um objeto com os campos id, title, position
       const savedMarker = {
@@ -60,6 +62,7 @@ export const Map = () => {
         },
       };
       setMarkers((prev) => [...prev, savedMarker]);
+      if (onPointAdded) onPointAdded();
     } catch (error) {
       alert(error.message);
     }

@@ -12,46 +12,13 @@ export async function getPoints(token) {
       },
     });
 
-    // Mocked response
-    /*
-    const response = {
-      status: 200,
-      data: [
-      {
-        id: 1,
-        descricao: 'Avenida Paulista',
-        latitude: -23.561684,
-        longitude: -46.656139,
-      },
-      {
-        id: 2,
-        descricao: 'Parque Ibirapuera',
-        latitude: -23.587416,
-        longitude: -46.657634,
-      },
-      {
-        id: 3,
-        descricao: 'Mercadão Municipal',
-        latitude: -23.541212,
-        longitude: -46.627684,
-      },
-      {
-        id: 4,
-        descricao: 'Estação da Luz',
-        latitude: -23.536578,
-        longitude: -46.633309,
-      },
-      ],
-    };
-    */
-
-    // o objeto response.data possui os campos latitude e longitude mas precisamos mudar os nomes para lat lng
+    // o objeto response.data possui os campos lat, lng e description
     const points = response.data.map(point => ({
       id: point.id,
-      title: point.descricao,
+      title: point.description,
       position: {
-        lat: point.latitude,
-        lng: point.longitude,
+        lat: point.lat,
+        lng: point.lng,
       },
     }));
 
@@ -67,22 +34,16 @@ export async function getPoints(token) {
 
 export async function postPoint(token, pointData) {
   try {
-    const response = await axios.post(BASE_URL, pointData, {
+    // Envia o body no formato correto para a API
+    const response = await axios.post(BASE_URL, {
+      lat: pointData.lat,
+      lng: pointData.lng,
+      description: pointData.description,
+    }, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-
-    // Mocked response
-    /*
-    const response = {
-      status: 200,
-      data: {
-      id: Math.floor(Math.random() * 10000),
-      ...pointData,
-      },
-    };
-    */
     if (response.status === 201) {
       return response.data;
     } else {

@@ -3,6 +3,7 @@ import { Navbar } from "../components";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { getPoints, postPoint } from '../services/mapService';
 import { useAuth } from "../contexts/AuthContext";
+import { InputText } from "../components/InputText";
 
 const containerStyle = {
   width: "100%",
@@ -19,7 +20,9 @@ const center = {
 export const Map = () => {
   const { token } = useAuth();
   const [markers, setMarkers] = useState([]);
-  
+  const [showInput, setShowInput] = useState(false);
+  const [pendingLatLng, setPendingLatLng] = useState(null);
+
   // Substitua pela sua chave da API do Google Maps
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -38,22 +41,25 @@ export const Map = () => {
   }, [token]);
 
   // Função para adicionar ponto ao clicar no mapa
-  const handleMapClick = async (event) => {
+  const handleMapClick = (event) => {
     const lat = event.latLng.lat();
     const lng = event.latLng.lng();
+    setPendingLatLng({ lat, lng });
+    setShowInput(true);
+  };
+
+  const handleConfirm = async (name) => {
+    if (!pendingLatLng) return;
     const newPoint = {
-      lat: lat,
-      lng: lng,
-      description: "Descrição do ponto", // Você pode personalizar isso
+      lat: pendingLatLng.lat,
+      lng: pendingLatLng.lng,
+      description: name,
     };
     try {
       const savedPoint = await postPoint(token, newPoint);
-      
-      // savedPoint vem com os campos id, latitude, longitude e descricao
-      // Precisamos transformar em um objeto com os campos id, title, position
       const savedMarker = {
         id: savedPoint.id,
-        title: savedPoint.descricao || "Novo Ponto",
+        title: name || "Novo Ponto",
         position: {
           lat: savedPoint.lat,
           lng: savedPoint.lng,
@@ -63,12 +69,19 @@ export const Map = () => {
     } catch (error) {
       alert(error.message);
     }
+    setShowInput(false);
+    setPendingLatLng(null);
+  };
+
+  const handleCancel = () => {
+    setShowInput(false);
+    setPendingLatLng(null);
   };
 
   return (
     <>
       <Navbar />
-      <div style={{ width: "100%", height: "88%" }}>
+      <div style={{ width: "100%", height: "88%", position: "relative" }}>
         {isLoaded ? (
           <GoogleMap
             mapContainerStyle={containerStyle}
@@ -87,6 +100,12 @@ export const Map = () => {
           </GoogleMap>
         ) : (
           <div>Carregando mapa...</div>
+        )}
+        {showInput && (
+          <InputText
+            onConfirm={handleConfirm}
+            onCancel={handleCancel}
+          />
         )}
       </div>
     </>
